@@ -27,7 +27,8 @@ files of a given public Github repository, grouped by file extension.
 * JDK 8 - Java Development Kit;
 * Spring - Java Framework;
 * Swagger - API Documentation;
-* Digital Ocean - Cloud provider.
+* Digital Ocean - Cloud provider;
+* Docker - Container.
 
 ## Public endpoints
 
@@ -45,7 +46,7 @@ files of a given public Github repository, grouped by file extension.
 
 ## Docker
 
-To run the web application from the docker container, run:
+To execute the web application from the docker container, run:
 
     docker run -it -p 80:8080 magicred7/trustly_challenge
 

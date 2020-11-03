@@ -40,8 +40,16 @@ files of a given public Github repository, grouped by file extension.
 1. Since no scraping tools can be used, scraping tools were created from the beginning in a completely generic way without linking to the solution;
 2. A structure was created to hold the data of the scraped site;
 3. In-depth search was used to search all files in the pre-created structure using recursion;
-4. The information is cached via Singleton into RAM memory;
-5. The information was grouped and made available via DTO only as necessary.
+4. The information is cached with Singleton into RAM memory;
+5. The information was grouped and made available with an DTO only with the necessary.
+
+## Docker
+
+To run the web application from the docker container, run:
+
+    docker run -it -p 80:8080 magicred7/trustly_challenge
+
+Redirect port `8080` of the container to the port of your choice.
 
 ## Author
 

@@ -1,9 +1,9 @@
 package br.com.ecromaneli.githubscraper.provider;
 
-import br.com.ecromaneli.githubscraper.enums.PathType;
-import br.com.ecromaneli.githubscraper.factories.PathFactory;
-import br.com.ecromaneli.githubscraper.models.Path;
-import br.com.ecromaneli.githubscraper.utils.XMLQuery.MLQuery;
+import br.com.ecromaneli.githubscraper.model.enums.PathType;
+import br.com.ecromaneli.githubscraper.model.factories.PathFactory;
+import br.com.ecromaneli.githubscraper.model.Path;
+import br.com.ecromaneli.githubscraper.util.XMLQuery.MLQuery;
 
 import java.util.ArrayList;
 import java.util.List;

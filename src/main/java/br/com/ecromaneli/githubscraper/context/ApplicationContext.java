@@ -1,6 +1,6 @@
 package br.com.ecromaneli.githubscraper.context;
 
-import br.com.ecromaneli.githubscraper.models.Repository;
+import br.com.ecromaneli.githubscraper.model.Repository;
 
 import java.util.Collections;
 import java.util.HashMap;

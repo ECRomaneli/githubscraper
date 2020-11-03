@@ -1,7 +1,7 @@
 package br.com.ecromaneli.githubscraper.provider;
 
-import br.com.ecromaneli.githubscraper.models.Path;
-import br.com.ecromaneli.githubscraper.models.Repository;
+import br.com.ecromaneli.githubscraper.model.Path;
+import br.com.ecromaneli.githubscraper.model.Repository;
 import lombok.Getter;
 
 import java.util.List;

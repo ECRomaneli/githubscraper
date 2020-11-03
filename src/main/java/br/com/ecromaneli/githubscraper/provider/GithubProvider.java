@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 public class GithubProvider extends GitProvider {
     public GithubProvider () {
+        this.name = "github";
         this.url = "https://github.com/{{user}}/{{project}}/tree/{{branch}}{{path}}";
         this.rawUrl = "https://raw.githubusercontent.com/{{user}}/{{project}}/{{branch}}{{path}}";
         this.tokenizer = Pattern.compile("com/([^/]*)/([^/]*)(/tree/([^/]*))?");

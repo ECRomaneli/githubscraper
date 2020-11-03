@@ -1,4 +1,4 @@
-package br.com.ecromaneli.githubscraper.config;
+package br.com.ecromaneli.githubscraper.context;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

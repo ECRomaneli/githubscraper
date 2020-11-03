@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public abstract class GitProvider {
+    @Getter protected String name;
     protected String url;
     protected String rawUrl;
     @Getter protected Pattern tokenizer;

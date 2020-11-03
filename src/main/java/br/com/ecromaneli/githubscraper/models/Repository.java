@@ -1,5 +1,6 @@
 package br.com.ecromaneli.githubscraper.models;
 
+import br.com.ecromaneli.githubscraper.context.ApplicationContext;
 import br.com.ecromaneli.githubscraper.enums.PathType;
 import br.com.ecromaneli.githubscraper.provider.GitProvider;
 import br.com.ecromaneli.githubscraper.utils.HttpRequest.HttpRequest;
@@ -83,9 +84,15 @@ public class Repository {
         repo.user = matcher.group(1);
         repo.project = matcher.group(2);
         repo.branch = matcher.group(4);
-        repo.workdir = new Directory("");
-
         if (repo.branch == null) { repo.branch = "master"; }
+
+        ApplicationContext context = ApplicationContext.getInstance();
+        if (context.hasRepository(repo)) {
+            return context.getRepository(repo);
+        }
+
+        repo.workdir = new Directory("");
+        context.setRepository(repo);
         return repo;
     }
 
@@ -139,5 +146,9 @@ public class Repository {
         repo.workdir = workdir;
         repo.retrieveMetadata = retrieveMetadata;
         return repo;
+    }
+
+    public String getKey() {
+        return provider.getName() + "|" + user + "|" + project + "|" + branch;
     }
 }

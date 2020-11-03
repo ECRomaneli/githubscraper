@@ -1,7 +1,7 @@
 package br.com.ecromaneli.githubscraper;
 
-import br.com.ecromaneli.githubscraper.utils.HttpRequest.HttpRequest;
-import br.com.ecromaneli.githubscraper.utils.XMLQuery.MLQuery;
+import br.com.ecromaneli.githubscraper.util.HttpRequest.HttpRequest;
+import br.com.ecromaneli.githubscraper.util.XMLQuery.MLQuery;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

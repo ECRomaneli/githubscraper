@@ -1,7 +1,7 @@
 package br.com.ecromaneli.githubscraper.provider;
 
-import br.com.ecromaneli.githubscraper.models.Path;
-import br.com.ecromaneli.githubscraper.models.Repository;
+import br.com.ecromaneli.githubscraper.model.Path;
+import br.com.ecromaneli.githubscraper.model.Repository;
 import lombok.Getter;
 
 import java.util.List;
@@ -9,6 +9,7 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public abstract class GitProvider {
+    @Getter protected String name;
     protected String url;
     protected String rawUrl;
     @Getter protected Pattern tokenizer;

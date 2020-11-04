@@ -32,8 +32,8 @@ files of a given public Github repository, grouped by file extension.
 
 ## Public endpoints
 
-* [/getExtensionMetadata](http://emersoncr.com.br:8080/getExtensionMetadata?repository=github.com/ECRomaneli/githubscraper), retrieve number of bytes and lines grouped by file extension;
-* [/getFilesGroupedByExtension](http://emersoncr.com.br:8080/getFilesGroupedByExtension?repository=github.com/ECRomaneli/githubscraper), retrieve files grouped by extension;
+* [/getExtensionMetadata?repository={{repositoryURL}}](http://emersoncr.com.br:8080/getExtensionMetadata?repository=github.com/ECRomaneli/githubscraper), retrieve number of bytes and lines grouped by file extension;
+* [/getFilesGroupedByExtension?repository={{repositoryURL}}](http://emersoncr.com.br:8080/getFilesGroupedByExtension?repository=github.com/ECRomaneli/githubscraper), retrieve files grouped by extension;
 * [Swagger Documentation](http://emersoncr.com.br:8080/swagger-ui.html#/scraping-service).
 
 ## Solution

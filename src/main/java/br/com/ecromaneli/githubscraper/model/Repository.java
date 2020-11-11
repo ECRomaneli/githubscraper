@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -74,12 +75,12 @@ public class Repository {
         }
     }
 
-    public static Repository parse(String rawRepo) throws ClassNotFoundException {
+    public static Repository parse(String rawRepo) throws MalformedURLException {
         Repository repo = new Repository();
         repo.provider = GitProvider.parse(rawRepo);
 
         Matcher matcher = repo.provider.getTokenizer().matcher(rawRepo);
-        if (!matcher.find()) { /*throw new MalformedURLException("rawRepo");*/ }
+        if (!matcher.find()) { throw new MalformedURLException(rawRepo); }
 
         repo.user = matcher.group(1);
         repo.project = matcher.group(2);

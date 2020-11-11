@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,15 +16,15 @@ import java.util.Map;
 public class ScrapingController {
 
     @Autowired
-    IScraperService controller;
+    IScraperService service;
 
     @GetMapping("/getFilesGroupedByExtension")
-    public Map<String, List<File>> getFilesGroupedByExtension(@RequestParam String repository) throws ClassNotFoundException {
-        return controller.getFilesGroupedByExtension(repository);
+    public Map<String, List<File>> getFilesGroupedByExtension(@RequestParam String repository) throws MalformedURLException {
+        return service.getFilesGroupedByExtension(repository);
     }
 
     @GetMapping("/getExtensionMetadata")
-    public List<ExtensionMetadataDTO> getExtensionMetadata(@RequestParam String repository) throws ClassNotFoundException {
-        return controller.getExtensionMetadata(repository);
+    public List<ExtensionMetadataDTO> getExtensionMetadata(@RequestParam String repository) throws MalformedURLException {
+        return service.getExtensionMetadata(repository);
     }
 }

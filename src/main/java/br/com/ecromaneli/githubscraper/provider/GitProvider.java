@@ -4,6 +4,7 @@ import br.com.ecromaneli.githubscraper.model.Path;
 import br.com.ecromaneli.githubscraper.model.Repository;
 import lombok.Getter;
 
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Pattern;
@@ -30,8 +31,8 @@ public abstract class GitProvider {
                 .replace("{{path}}", path.getAbsolutePath());
     }
 
-    public static GitProvider parse(String url) throws ClassNotFoundException {
+    public static GitProvider parse(String url) throws MalformedURLException {
         if (url.contains("github")) { return new GithubProvider(); }
-        throw new ClassNotFoundException();
+        throw new MalformedURLException(url);
     }
 }

@@ -21,7 +21,7 @@ public class ExtensionMetadataDTO implements Serializable {
         lines = 0;
         bytes = 0;
         for (File file : files) {
-            if (file.getLinesNumber() != null) { lines += file.getLinesNumber(); }
+            if (file.getLines() != null) { lines += file.getLines(); }
             if (file.getBytes() != null) { bytes += file.getBytes(); }
         }
     }

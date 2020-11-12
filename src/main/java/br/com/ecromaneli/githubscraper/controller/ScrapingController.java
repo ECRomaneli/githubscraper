@@ -1,8 +1,8 @@
 package br.com.ecromaneli.githubscraper.controller;
 
+import br.com.ecromaneli.githubscraper.model.File;
 import br.com.ecromaneli.githubscraper.model.dto.ExtensionMetadataDTO;
 import br.com.ecromaneli.githubscraper.service.interfaces.IScraperService;
-import br.com.ecromaneli.githubscraper.model.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,5 +26,10 @@ public class ScrapingController {
     @GetMapping("/getExtensionMetadata")
     public List<ExtensionMetadataDTO> getExtensionMetadata(@RequestParam String repository) throws MalformedURLException {
         return service.getExtensionMetadata(repository);
+    }
+
+    @GetMapping("/getCachedRepositories")
+    public List<String> getCachedRepositories() {
+        return service.getCachedRepositories();
     }
 }

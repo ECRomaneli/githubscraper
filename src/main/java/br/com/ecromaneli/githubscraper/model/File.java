@@ -9,7 +9,7 @@ import java.util.Locale;
 @Getter @Setter
 public class File extends Path {
     private String extension;
-    private Integer linesNumber;
+    private Integer lines;
     private Integer bytes;
 
     public File () {
@@ -21,11 +21,11 @@ public class File extends Path {
         setName(name);
     }
 
-    public File (String extension, String name, Integer linesNumber, Integer bytes) {
+    public File (String extension, String name, Integer lines, Integer bytes) {
         this ();
         this.extension = extension;
         this.name = name;
-        this.linesNumber = linesNumber;
+        this.lines = lines;
         this.bytes = bytes;
     }
 
@@ -50,7 +50,7 @@ public class File extends Path {
         return "File{" +
                 "name='" + name + '\'' +
                 ", extension='" + extension + '\'' +
-                ", linesNumber=" + linesNumber +
+                ", linesNumber=" + lines +
                 ", bytes='" + bytes + '\'' +
                 '}';
     }

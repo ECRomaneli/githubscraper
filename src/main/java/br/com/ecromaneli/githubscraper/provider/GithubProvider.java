@@ -1,20 +1,24 @@
 package br.com.ecromaneli.githubscraper.provider;
 
+import br.com.ecromaneli.githubscraper.model.Path;
+import br.com.ecromaneli.githubscraper.model.Repository;
 import br.com.ecromaneli.githubscraper.model.enums.PathType;
 import br.com.ecromaneli.githubscraper.model.factories.PathFactory;
-import br.com.ecromaneli.githubscraper.model.Path;
 import br.com.ecromaneli.githubscraper.util.XMLQuery.MLQuery;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GithubProvider extends GitProvider {
+    public static final String DOMAIN = "github.com";
+    private static final Pattern TOKENIZER = Pattern.compile("com/([^/]*)/([^/]*)(/tree/([^/]*))?");
+
     public GithubProvider () {
-        this.name = "github";
         this.url = "https://github.com/{{user}}/{{project}}/tree/{{branch}}{{path}}";
         this.rawUrl = "https://raw.githubusercontent.com/{{user}}/{{project}}/{{branch}}{{path}}";
-        this.tokenizer = Pattern.compile("com/([^/]*)/([^/]*)(/tree/([^/]*))?");
         this.scraper = (String ml) -> {
             final List<Path> listPath = new ArrayList<>();
 
@@ -34,5 +38,22 @@ public class GithubProvider extends GitProvider {
 
             return listPath;
         };
+    }
+
+    @Override
+    protected Repository toRepository(String rawRepo) throws MalformedURLException {
+        Matcher matcher = TOKENIZER.matcher(rawRepo);
+        if (!matcher.find()) { throw new MalformedURLException(rawRepo); }
+
+        String user = matcher.group(1);
+        String project = matcher.group(2);
+        String branch = matcher.group(4);
+
+        return new Repository(this, user, project, branch);
+    }
+
+    @Override
+    public String toString() {
+        return DOMAIN;
     }
 }

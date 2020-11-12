@@ -1,9 +1,10 @@
 package br.com.ecromaneli.githubscraper.service;
 
-import br.com.ecromaneli.githubscraper.service.interfaces.IScraperService;
+import br.com.ecromaneli.githubscraper.context.ApplicationContext;
 import br.com.ecromaneli.githubscraper.model.File;
 import br.com.ecromaneli.githubscraper.model.Repository;
 import br.com.ecromaneli.githubscraper.model.dto.ExtensionMetadataDTO;
+import br.com.ecromaneli.githubscraper.service.interfaces.IScraperService;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -28,5 +29,11 @@ public class ScrapingService implements IScraperService {
         repo.setRetrieveMetadata(true);
 
         return ExtensionMetadataDTO.from(repo);
+    }
+
+    @Override
+    public List<String> getCachedRepositories() {
+        return ApplicationContext.getInstance().getCachedRepositories().values().stream()
+                .map(Repository::toString).collect(Collectors.toList());
     }
 }

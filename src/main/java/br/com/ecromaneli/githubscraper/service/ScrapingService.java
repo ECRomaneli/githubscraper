@@ -1,11 +1,13 @@
 package br.com.ecromaneli.githubscraper.service;
 
-import br.com.ecromaneli.githubscraper.service.interfaces.IScraperService;
+import br.com.ecromaneli.githubscraper.context.ApplicationContext;
 import br.com.ecromaneli.githubscraper.model.File;
 import br.com.ecromaneli.githubscraper.model.Repository;
 import br.com.ecromaneli.githubscraper.model.dto.ExtensionMetadataDTO;
+import br.com.ecromaneli.githubscraper.service.interfaces.IScraperService;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 public class ScrapingService implements IScraperService {
 
     @Override
-    public Map<String, List<File>> getFilesGroupedByExtension(String repository) throws ClassNotFoundException {
+    public Map<String, List<File>> getFilesGroupedByExtension(String repository) throws MalformedURLException {
         Repository repo = Repository.parse(repository);
         repo.setRetrieveMetadata(true);
 
@@ -22,10 +24,16 @@ public class ScrapingService implements IScraperService {
     }
 
     @Override
-    public List<ExtensionMetadataDTO> getExtensionMetadata(String repository) throws ClassNotFoundException {
+    public List<ExtensionMetadataDTO> getExtensionMetadata(String repository) throws MalformedURLException {
         Repository repo = Repository.parse(repository);
         repo.setRetrieveMetadata(true);
 
         return ExtensionMetadataDTO.from(repo);
+    }
+
+    @Override
+    public List<String> getCachedRepositories() {
+        return ApplicationContext.getInstance().getCachedRepositories().values().stream()
+                .map(Repository::toString).collect(Collectors.toList());
     }
 }

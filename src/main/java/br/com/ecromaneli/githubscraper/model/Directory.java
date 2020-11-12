@@ -10,6 +10,8 @@ import java.util.Map;
 
 @Getter
 public class Directory extends Path {
+    public static final Directory EMPTY_DIR = new Directory();
+
     @JsonIgnore
     private Map<String, Path> children = new HashMap<>();
 
